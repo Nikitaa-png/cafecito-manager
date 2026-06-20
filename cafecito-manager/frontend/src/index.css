@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* 
+  Tailwind v4 dark mode selector.
+  We add .dark to <html>, so children match :where(.dark, .dark *)
+*/
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #fdf6f0; }
+::-webkit-scrollbar-thumb { background: #c4a89a; border-radius: 3px; }
+html.dark ::-webkit-scrollbar-track { background: #1a1008; }
+html.dark ::-webkit-scrollbar-thumb { background: #6b3a2a; }
+
+::selection { background: #f0d9d0; color: #3d1f10; }
+html.dark ::selection { background: #6b3a2a; color: #f5ede6; }
+
+@layer utilities {
+  .input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid #dcc8bc;
+    background-color: #ffffff;
+    color: #3d1f10;
+    transition: box-shadow 0.2s;
+  }
+  .input::placeholder { color: #b8998a; }
+  .input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #c4846a;
+  }
+
+  html.dark .input {
+    border-color: #3d2b22;
+    background-color: #2a1f1a;
+    color: #f5ede6;
+  }
+  html.dark .input::placeholder { color: #7a5a4a; }
+
+  .badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+}
