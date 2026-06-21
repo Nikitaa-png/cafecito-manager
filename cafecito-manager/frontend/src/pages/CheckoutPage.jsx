@@ -26,15 +26,22 @@ const CheckoutPage = () => {
     try {
       const { data } = await orderAPI.create({
         ...form,
-        items: cart.map(item => ({ menuItem: item._id, name: item.name, price: item.price, quantity: item.quantity })),
+        items: cart.map(item => ({
+          menuItem: item._id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
         totalAmount: parseFloat((total * 1.08).toFixed(2)),
       });
       clearCart();
       navigate('/order-confirmation', { state: { order: data.order } });
-    } catch {
-      clearCart();
-      navigate('/order-confirmation', { state: { order: { _id: 'local-' + Date.now(), customerName: form.customerName, items: cart, totalAmount: parseFloat((total * 1.08).toFixed(2)), status: 'Pending' } } });
-    } finally { setLoading(false); }
+    } catch (err) {
+      const msg = err.response?.data?.message || 'Failed to place order. Is the backend running?';
+      toast.error(msg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (cart.length === 0) return (
