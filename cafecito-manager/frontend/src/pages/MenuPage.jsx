@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { FiSearch, FiSliders } from 'react-icons/fi';
 import { MENU_ITEMS, CATEGORIES } from '../data/menuItems';
 import MenuCard from '../components/MenuCard';
 import MenuModal from '../components/MenuModal';
@@ -47,15 +46,21 @@ const MenuPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Search + Sort */}
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
-          <div className="relative flex-1">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c4a89a]" />
-            <input type="text" placeholder="Search menu items…" value={search}
-              onChange={e => setSearch(e.target.value)} className="input pl-11" />
+          <div className="flex-1">
+            <input
+              type="text"
+              placeholder="🔍  Search menu items…"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              className="w-full px-4 py-3 border border-[#dcc8bc] dark:border-[#3d2b22] rounded-2xl bg-white dark:bg-[#2a1f1a] text-[#3d1f10] dark:text-[#f5ede6] placeholder-[#b8998a] dark:placeholder-[#7a5a4a] focus:outline-none focus:ring-2 focus:ring-[#c4846a] transition-shadow"
+            />
           </div>
-          <div className="relative">
-            <FiSliders className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c4a89a] pointer-events-none" />
-            <select value={sortBy} onChange={e => setSortBy(e.target.value)}
-              className="input pl-11 pr-8 appearance-none cursor-pointer min-w-48">
+          <div>
+            <select
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value)}
+              className="w-full px-4 py-3 border border-[#dcc8bc] dark:border-[#3d2b22] rounded-2xl bg-white dark:bg-[#2a1f1a] text-[#3d1f10] dark:text-[#f5ede6] focus:outline-none focus:ring-2 focus:ring-[#c4846a] appearance-none cursor-pointer min-w-48"
+            >
               {SORT_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
             </select>
           </div>

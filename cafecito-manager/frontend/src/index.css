@@ -41,13 +41,7 @@ html.dark ::selection { background: #6b3a2a; color: #f5ede6; }
     outline: none;
     box-shadow: 0 0 0 2px #c4846a;
   }
-
-  html.dark .input {
-    border-color: #3d2b22;
-    background-color: #2a1f1a;
-    color: #f5ede6;
-  }
-  html.dark .input::placeholder { color: #7a5a4a; }
+  /* Dark mode handled via Tailwind dark: classes on each element */
 
   .badge {
     padding: 0.25rem 0.75rem;

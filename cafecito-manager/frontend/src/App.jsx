@@ -26,6 +26,7 @@ import AdminMenuPage from './pages/admin/AdminMenuPage';
 import AdminOrdersPage from './pages/admin/AdminOrdersPage';
 import AdminBookingsPage from './pages/admin/AdminBookingsPage';
 import AdminUsersPage from './pages/admin/AdminUsersPage';
+import AdminMessagesPage from './pages/admin/AdminMessagesPage';
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
                 <Route path="menu" element={<AdminMenuPage />} />
                 <Route path="orders" element={<AdminOrdersPage />} />
                 <Route path="bookings" element={<AdminBookingsPage />} />
+                <Route path="messages" element={<AdminMessagesPage />} />
                 <Route path="users" element={<AdminUsersPage />} />
               </Route>
             </Routes>

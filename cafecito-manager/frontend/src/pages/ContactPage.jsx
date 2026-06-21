@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { FiMapPin, FiPhone, FiMail, FiClock, FiInstagram, FiFacebook, FiTwitter, FiSend } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
+import { messageAPI } from '../services/api';
+
 const ContactPage = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [loading, setLoading] = useState(false);
@@ -10,10 +12,15 @@ const ContactPage = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(r => setTimeout(r, 900));
-    toast.success("Message sent! We'll get back to you soon ☕");
-    setForm({ name: '', email: '', subject: '', message: '' });
-    setLoading(false);
+    try {
+      await messageAPI.send(form);
+      toast.success("Message sent! We'll get back to you soon ☕");
+      setForm({ name: '', email: '', subject: '', message: '' });
+    } catch {
+      toast.error('Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

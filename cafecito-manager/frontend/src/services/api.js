@@ -64,4 +64,12 @@ export const bookingAPI = {
   delete: (id) => api.delete(`/bookings/${id}`),
 };
 
+// Messages
+export const messageAPI = {
+  send: (data) => api.post('/messages', data),
+  getAll: () => api.get('/messages'),
+  markRead: (id) => api.put(`/messages/${id}/read`),
+  delete: (id) => api.delete(`/messages/${id}`),
+};
+
 export default api;

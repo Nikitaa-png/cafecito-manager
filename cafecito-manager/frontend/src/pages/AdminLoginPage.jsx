@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiLock, FiMail, FiEye, FiEyeOff, FiShield } from 'react-icons/fi';
+import { FiEye, FiEyeOff, FiShield } from 'react-icons/fi';
 import { TbCoffee } from 'react-icons/tb';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
@@ -59,30 +59,26 @@ const AdminLoginPage = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-[#c4a89a] mb-2">Admin Email</label>
-              <div className="relative">
-                <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7a5a4a]" />
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                  required
-                  placeholder="admin@cafecito.com"
-                  className="w-full pl-11 pr-4 py-3 bg-[#3d2b22] border border-[#4d3830] rounded-2xl text-[#f5ede6] placeholder-[#7a5a4a] focus:outline-none focus:ring-2 focus:ring-[#c4846a]"
-                />
-              </div>
+              <input
+                type="email"
+                value={form.email}
+                onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
+                required
+                placeholder="admin@cafecito.com"
+                className="w-full px-4 py-3 bg-[#3d2b22] border border-[#4d3830] rounded-2xl text-[#f5ede6] placeholder-[#7a5a4a] focus:outline-none focus:ring-2 focus:ring-[#c4846a]"
+              />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-[#c4a89a] mb-2">Password</label>
               <div className="relative">
-                <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7a5a4a]" />
                 <input
                   type={showPwd ? 'text' : 'password'}
                   value={form.password}
                   onChange={e => setForm(p => ({ ...p, password: e.target.value }))}
                   required
                   placeholder="••••••••••"
-                  className="w-full pl-11 pr-12 py-3 bg-[#3d2b22] border border-[#4d3830] rounded-2xl text-[#f5ede6] placeholder-[#7a5a4a] focus:outline-none focus:ring-2 focus:ring-[#c4846a]"
+                  className="w-full px-4 py-3 pr-12 bg-[#3d2b22] border border-[#4d3830] rounded-2xl text-[#f5ede6] placeholder-[#7a5a4a] focus:outline-none focus:ring-2 focus:ring-[#c4846a]"
                 />
                 <button type="button" onClick={() => setShowPwd(p => !p)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-[#7a5a4a] hover:text-[#c4846a] transition-colors">
